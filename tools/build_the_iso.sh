@@ -2,9 +2,11 @@
 # script to generate bios or uefi boot image
 
 # adjust as needed
-SRCISO=~/CentOS-7-x86_64-DVD.iso  # rhel-server-7.3-x86_64-boot.iso, CentOS-7-x86_64-Minimal.iso , etc
-OSNAME=CENTOS                   # pick RHEL or CENTOS
-OSVERSION=7                     # rhel 7.2, 7.3, centos, 6,7, etc
+# SRCISO=~/CentOS-7-x86_64-DVD.iso  # rhel-server-7.3-x86_64-boot.iso, CentOS-7-x86_64-Minimal.iso , etc
+# SRCISO=~/CentOS-7-x86_64-Minimal.iso
+SRCISO=~/rhel-server-7.3-x86_64-boot.iso
+OSNAME=RHEL                   # pick RHEL or CENTOS
+OSVERSION=7.3                   # rhel 7.2, 7.3, centos, 6,7, etc
 OSARCH=x86_64                   # for now only x86_64
 OSBOOT=uefi                     # bios or uefi boot
 
@@ -79,7 +81,14 @@ echo "Mounting iso filesystem"
 mount -o loop --read-only $SRCISO $ISODIR
 echo "copy isolinux to temp directory"
 rsync -rv $ISODIR/* $TRGTDIR
+echo "generate isolinux.cfg"
+cat templates/isolinux.header > $TRGTDIR/isolinux/isolinux.cfg
+./readyaml.sh >> $TRGTDIR/isolinux/isolinux.cfg
+cat templates/isolinux.footer >> $TRGTDIR/isolinux/isolinux.cfg
+echo "copy grub.cfg"
+cp templates/grub.cfg $TRGTDIR/EFI/BOOT/grub.cfg
 cd $TRGTDIR
 echo "Creating new bootable iso"
 mkisofs -U -A "$OSID" -V "$OSID" -volset "$OSID" -J -joliet-long -r -v -T -x ./lost+found -o $CURDIR/$TRGTISO -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot .
-
+echo "OS id: $OSID"
+cat $TRGTDIR/isolinux/isolinux.cfg

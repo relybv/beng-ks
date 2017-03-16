@@ -1,0 +1,20 @@
+default vesamenu.c32
+prompt 0
+timeout 600
+
+display boot.msg
+
+#menu background splash.jpg
+menu title Welcome to Red Hat Enterprise Linux 7.x!
+#menu color border 0 #ffffffff #00000000
+#menu color sel 7 #ffffffff #ff000000
+#menu color title 0 #ffffffff #00000000
+#menu color tabmsg 0 #ffffffff #00000000
+#menu color unsel 0 #ffffffff #00000000
+#menu color hotsel 0 #ff000000 #ffffffff
+#menu color hotkey 7 #ffffffff #ff000000
+#menu color scrollbar 0 #ffffffff #00000000
+
+
+#Beeld en Geluid
+
