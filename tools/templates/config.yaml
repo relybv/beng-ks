@@ -2,20 +2,19 @@ menu1:
   entry: 1
   menulabel: deploy3 - deploy server RHEL7 - 172.19.53.32
   ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-deploy3.cfg
-  method: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
   append: initrd=initrd.img lang=en_US keymap=us
   ip: 172.19.53.32
   netmask: 255.255.255.0
   gateway: 172.19.53.254
-  dns: 172.18.99.210
+  nameserver: 172.18.99.210
 menu2:
   entry: 2
   menulabel: deploy4 - deploy server RHEL7 - 172.19.53.33
   ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-deploy3.cfg
-  method: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
   append: initrd=initrd.img lang=en_US keymap=us
   ip: 172.19.53.33
   netmask: 255.255.255.0
   gateway: 172.19.53.254
-  dns: 172.18.99.210
-
+  nameserver: 172.18.99.210

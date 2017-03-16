@@ -28,8 +28,8 @@ parse_yaml() {
             if ($2 == "append") {
                 printf(" %s", $3);
             }
-            if ($2 == "method") {
-                printf(" method=%s", $3);
+            if ($2 == "repo") {
+                printf(" repo=%s", $3);
             }
             if ($2 == "ip") {
                 printf(" ip=%s", $3);
@@ -40,8 +40,8 @@ parse_yaml() {
             if ($2 == "gateway") {
                 printf(" gateway=%s", $3);
             }
-            if ($2 == "dns") {
-                printf(" dns=%s\n", $3);
+            if ($2 == "nameserver") {
+                printf(" nameserver=%s\n", $3);
             }
         }
     }' | sed 's/_=/+=/g'
