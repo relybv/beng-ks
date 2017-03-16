@@ -83,7 +83,7 @@ echo "copy isolinux to temp directory"
 rsync -rv $ISODIR/* $TRGTDIR
 echo "generate isolinux.cfg"
 cat templates/isolinux.header > $TRGTDIR/isolinux/isolinux.cfg
-./readyaml.sh >> $TRGTDIR/isolinux/isolinux.cfg
+./yaml2isolinux.sh >> $TRGTDIR/isolinux/isolinux.cfg
 cat templates/isolinux.footer >> $TRGTDIR/isolinux/isolinux.cfg
 echo "copy grub.cfg"
 cp templates/grub.cfg $TRGTDIR/EFI/BOOT/grub.cfg
