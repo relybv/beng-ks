@@ -1,0 +1,11 @@
+submenu 'Troubleshooting -->' {
+        menuentry 'Install Red Hat Enterprise Linux 7.3 in basic graphics mode' --class fedora --class gnu-linux --class gnu --class os {
+                linuxefi /images/pxeboot/vmlinuz inst.stage2=hd:LABEL=RHEL-7.3\x20x86_64 xdriver=vesa nomodeset quiet
+                initrdefi /images/pxeboot/initrd.img
+        }
+        menuentry 'Rescue a Red Hat Enterprise Linux system' --class fedora --class gnu-linux --class gnu --class os {
+                linuxefi /images/pxeboot/vmlinuz inst.stage2=hd:LABEL=RHEL-7.3\x20x86_64 rescue quiet
+                initrdefi /images/pxeboot/initrd.img
+        }
+}
+

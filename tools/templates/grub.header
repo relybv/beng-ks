@@ -1,0 +1,27 @@
+### Beeld en Geluid grub EFI boot ###
+set default="1"
+
+function load_video {
+  insmod efi_gop
+  insmod efi_uga
+  insmod video_bochs
+  insmod video_cirrus
+  insmod all_video
+}
+
+load_video
+set gfxpayload=keep
+insmod gzio
+insmod part_gpt
+insmod ext2
+
+set timeout=60
+
+search --no-floppy --set=root -l 'RHEL-7.3 x86_64'
+menuentry "Boot from local drive" {
+  set root=(hd0,5)
+  linux /boot/vmlinuz
+  initrd /boot/initrd.img
+}
+### BEGIN generated menu ###
+

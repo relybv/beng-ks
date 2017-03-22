@@ -8,12 +8,11 @@ SRCISO=~/rhel-server-7.3-x86_64-boot.iso
 OSNAME=RHEL                   # pick RHEL or CENTOS
 OSVERSION=7.3                   # rhel 7.2, 7.3, centos, 6,7, etc
 OSARCH=x86_64                   # for now only x86_64
-OSBOOT=uefi                     # bios or uefi boot
 
 ### start of code ###
 
 OSID="${OSNAME}-${OSVERSION} ${OSARCH}"
-TRGTISO="ks-${OSNAME}-${OSVERSION}-${OSARCH}-${OSBOOT}.iso"
+TRGTISO="ks-${OSNAME}-${OSVERSION}-${OSARCH}.iso"
 CURDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ISODIR=`mktemp -d -p "$CURDIR"`
 TRGTDIR=`mktemp -d -p "$CURDIR"`
@@ -79,16 +78,23 @@ echo "Target dir: $TRGTDIR"
 
 echo "Mounting iso filesystem"
 mount -o loop --read-only $SRCISO $ISODIR
+
 echo "copy isolinux to temp directory"
 rsync -rv $ISODIR/* $TRGTDIR
+
 echo "generate isolinux.cfg"
 cat templates/isolinux.header > $TRGTDIR/isolinux/isolinux.cfg
 ./yaml2isolinux.sh >> $TRGTDIR/isolinux/isolinux.cfg
 cat templates/isolinux.footer >> $TRGTDIR/isolinux/isolinux.cfg
-echo "copy grub.cfg"
-cp templates/grub.cfg $TRGTDIR/EFI/BOOT/grub.cfg
+
+echo "generate grub.cfg"
+cat templates/grub.header > $TRGTDIR/EFI/BOOT/grub.cfg
+./yaml2grub.sh >> $TRGTDIR/EFI/BOOT/grub.cfg
+cat templates/grub.footer >> $TRGTDIR/EFI/BOOT/grub.cfg
 cd $TRGTDIR
+
 echo "Creating new bootable iso"
 mkisofs -U -A "$OSID" -V "$OSID" -volset "$OSID" -J -joliet-long -r -v -T -x ./lost+found -o $CURDIR/$TRGTISO -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot .
 echo "OS id: $OSID"
-cat $TRGTDIR/isolinux/isolinux.cfg
+# cat $TRGTDIR/isolinux/isolinux.cfg
+# cat $TRGTDIR/EFI/BOOT/grub.cfg

@@ -1,3 +1,4 @@
+### Beeld en Geluid isolinux bios boot ###
 default vesamenu.c32
 prompt 0
 timeout 600
@@ -15,6 +16,4 @@ menu title Welcome to Red Hat Enterprise Linux 7.x!
 #menu color hotkey 7 #ffffffff #ff000000
 #menu color scrollbar 0 #ffffffff #00000000
 
-
-#Beeld en Geluid
 
