@@ -1,7 +1,7 @@
 ### Beeld en Geluid isolinux bios boot ###
 default vesamenu.c32
 prompt 0
-timeout 600
+# timeout 600
 
 display boot.msg
 

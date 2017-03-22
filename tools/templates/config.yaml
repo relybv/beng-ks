@@ -11,7 +11,7 @@ menu1:
 menu2:
   entry: 2
   menulabel: deploy4 - deploy server RHEL7 - 172.19.53.33
-  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-deploy3.cfg
+  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-deploy4.cfg
   repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
   append: initrd=initrd.img lang=en_US keymap=us
   ip: 172.19.53.33
