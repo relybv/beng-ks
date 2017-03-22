@@ -3,16 +3,15 @@
 
 # adjust as needed
 # SRCISO=~/CentOS-7-x86_64-DVD.iso  # rhel-server-7.3-x86_64-boot.iso, CentOS-7-x86_64-Minimal.iso , etc
-# SRCISO=~/CentOS-7-x86_64-Minimal.iso
 SRCISO=~/rhel-server-7.3-x86_64-boot.iso
-OSNAME=RHEL                   # pick RHEL or CENTOS
+OSNAME=RHEL                     # pick RHEL or CENTOS
 OSVERSION=7.3                   # rhel 7.2, 7.3, centos, 6,7, etc
 OSARCH=x86_64                   # for now only x86_64
 
 ### start of code ###
-
+NOW=`date +%Y%m%d-%H%M%S`
 OSID="${OSNAME}-${OSVERSION} ${OSARCH}"
-TRGTISO="ks-${OSNAME}-${OSVERSION}-${OSARCH}.iso"
+TRGTISO="ks-${OSNAME}-${OSVERSION}-${NOW}-${OSARCH}.iso"
 CURDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ISODIR=`mktemp -d -p "$CURDIR"`
 TRGTDIR=`mktemp -d -p "$CURDIR"`
@@ -21,16 +20,16 @@ TRGTDIR=`mktemp -d -p "$CURDIR"`
 function cleanup {      
   cd $CURDIR
   if mountpoint -q $ISODIR; then
-    echo "Unmounting $ISODIR"
+    # echo "Unmounting $ISODIR"
     umount $ISODIR
   else
     echo "$ISODIR is no mountpoint"
   fi
   rmdir "$ISODIR"
-  echo "Deleted iso directory $ISODIR"
+  # echo "Deleted iso directory $ISODIR"
   if [ -d "$TRGTDIR" ]; then
     rm -rf $TRGTDIR
-    echo "Deleted target dir $TRGTDIR"
+    # echo "Deleted target dir $TRGTDIR"
   fi
 }
 
@@ -96,5 +95,4 @@ cd $TRGTDIR
 echo "Creating new bootable iso"
 mkisofs -U -A "$OSID" -V "$OSID" -volset "$OSID" -J -joliet-long -r -v -T -x ./lost+found -o $CURDIR/$TRGTISO -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot .
 echo "OS id: $OSID"
-# cat $TRGTDIR/isolinux/isolinux.cfg
-# cat $TRGTDIR/EFI/BOOT/grub.cfg
+echo "Generated iso: $CURDIR/$TRGTISO"
