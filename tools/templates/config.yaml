@@ -1,7 +1,7 @@
 menu1:
   entry: 1
-  menulabel: deploy3 - deploy server RHEL7 - 172.19.53.32
-  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-deploy3.cfg
+  menulabel: deploy2 - deploy server RHEL7 - 172.19.53.31
+  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-deploy2.cfg
   repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
   append: initrd=initrd.img lang=en_US keymap=us
   ip: 172.19.53.32
@@ -10,6 +10,16 @@ menu1:
   nameserver: 172.18.99.210
 menu2:
   entry: 2
+  menulabel: deploy3 - deploy server RHEL7 - 172.19.53.32
+  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-deploy3.cfg
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  append: initrd=initrd.img lang=en_US keymap=us
+  ip: 172.19.53.32
+  netmask: 255.255.255.0
+  gateway: 172.19.53.254
+  nameserver: 172.18.99.210
+menu3:
+  entry: 3
   menulabel: deploy4 - deploy server RHEL7 - 172.19.53.33
   ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-deploy4.cfg
   repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
@@ -18,3 +28,124 @@ menu2:
   netmask: 255.255.255.0
   gateway: 172.19.53.254
   nameserver: 172.18.99.210
+menu4:
+  entry: 4
+  menulabel: deploy5 - deploy server RHEL7 - 172.19.53.34
+  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-deploy5.cfg
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  append: initrd=initrd.img lang=en_US keymap=us
+  ip: 172.19.53.34
+  netmask: 255.255.255.0
+  gateway: 172.19.53.254
+  nameserver: 172.18.99.210
+menu5:
+  entry: 5
+  menulabel: Docubeheer - Docubeheer server RHEL7 - 172.18.99.203
+  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-docubeheer.cfg
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  append: initrd=initrd.img lang=en_US keymap=us
+  ip: 172.18.99.203
+  netmask: 255.255.0.0
+  gateway: 172.18.255.254
+  nameserver: 172.18.99.210
+menu6:
+  entry: 6
+  menulabel: Major-Smythe - Server RHEL7 - 172.19.53.29
+  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-major_smythe.cfg
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  append: initrd=initrd.img lang=en_US keymap=us
+  ip: 172.19.53.29
+  netmask: 255.255.255.0
+  gateway: 172.19.53.254
+  nameserver: 172.18.99.210
+menu7:
+  entry: 7
+  menulabel: Renard - Server RHEL7 - 172.19.53.28
+  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-renard.cfg
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  append: initrd=initrd.img lang=en_US keymap=us
+  ip: 172.19.53.28
+  netmask: 255.255.255.0
+  gateway: 172.19.53.254
+  nameserver: 172.18.99.210
+menu8:
+  entry: 8
+  menulabel: Puppet - Server RHEL7 - 172.19.53.35
+  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-puppet.cfg
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  append: initrd=initrd.img lang=en_US keymap=us
+  ip: 172.19.53.35
+  netmask: 255.255.255.0
+  gateway: 172.19.53.254
+  nameserver: 172.18.99.210
+menu9:
+  entry: 9
+  menulabel: Puppetclient - Server RHEL7 - 172.19.53.36
+  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-puppetclient.cfg
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  append: initrd=initrd.img lang=en_US keymap=us
+  ip: 172.19.53.36
+  netmask: 255.255.255.0
+  gateway: 172.19.53.254
+  nameserver: 172.18.99.210
+menu10:
+  entry: 10
+  menulabel: Roy-Bean OMP - Server RHEL7 - 172.19.53.37
+  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-roy-bean.cfg
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  append: initrd=initrd.img lang=en_US keymap=us
+  ip: 172.19.53.37
+  netmask: 255.255.255.0
+  gateway: 172.19.53.254
+  nameserver: 172.18.99.210
+menu11:
+  entry: 11
+  menulabel: Mr Wint data digitale collectie- Server RHEL7 - 178.249.248.163
+  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-mrwint.cfg
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  append: initrd=initrd.img lang=en_US keymap=us
+  ip: 178.249.248.163
+  netmask: 255.255.255.128
+  gateway: 178.249.248.129
+  nameserver: 172.18.99.210
+menu12:
+  entry: 12
+  menulabel: Mr kidd data digitale collectie- Server RHEL7 - 178.249.248.164
+  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-mrkidd.cfg
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  append: initrd=initrd.img lang=en_US keymap=us
+  ip: 178.249.248.164
+  netmask: 255.255.255.128
+  gateway: 178.249.248.129
+  nameserver: 172.18.99.210
+menu13:
+  entry: 13
+  menulabel: Xenia Onatoppi V114 - Server RHEL7 - 172.19.53.38
+  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-xeniaonatopp.cfg
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  append: initrd=initrd.img lang=en_US keymap=us
+  ip: 172.19.53.38
+  netmask: 255.255.255.0
+  gateway: 172.19.53.254
+  nameserver: 172.18.99.210
+menu14:
+  entry: 14
+  menulabel: sprekerlabel2001 s433 - Server RHEL7 - 10.100.10.105
+  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-prekerlab2001.cfg
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  append: initrd=initrd.img lang=en_US keymap=us
+  ip: 10.100.10.105
+  netmask: 255.255.255.0
+  gateway: 10.100.10.1
+  nameserver: 172.18.99.210
+menu15:
+  entry: 15
+  menulabel: sprekerlabel2002 s434 - Server RHEL7 - 10.100.10.106
+  ks: http://sjefkeschelm.beeldengeluid.nl/beng-rely/files/ks_7/ks-prekerlab2002.cfg
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  append: initrd=initrd.img lang=en_US keymap=us
+  ip: 10.100.10.106
+  netmask: 255.255.255.0
+  gateway: 10.100.10.1
+  nameserver: 172.18.99.210
+
