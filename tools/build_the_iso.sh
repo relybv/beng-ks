@@ -1,5 +1,6 @@
 #!/bin/bash
-# script to generate bios or uefi boot image
+set -e
+# script to generate iso boot image
 
 # adjust as needed
 # SRCISO=~/CentOS-7-x86_64-DVD.iso  # rhel-server-7.3-x86_64-boot.iso, CentOS-7-x86_64-Minimal.iso , etc
@@ -12,7 +13,6 @@ OSARCH=x86_64                   # for now only x86_64
 NOW=`date +%Y%m%d-%H%M%S`
 OSID="${OSNAME}-${OSVERSION} ${OSARCH}"
 TRGTISO="ks-${OSNAME}-${OSVERSION}-${NOW}-uefi-${OSARCH}.iso"
-TRGISOBIOS="ks-${OSNAME}-${OSVERSION}-${NOW}-bios-${OSARCH}.iso"
 CURDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ISODIR=`mktemp -d -p "$CURDIR"`
 TRGTDIR=`mktemp -d -p "$CURDIR"`
@@ -97,8 +97,3 @@ echo "Creating new bootable uefi iso"
 mkisofs -U -A "$OSID" -V "$OSID" -volset "$OSID" -J -joliet-long -r -v -T -x ./lost+found -o $CURDIR/$TRGTISO -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot .
 echo "OS id: $OSID"
 echo "Generated iso: $CURDIR/$TRGTISO"
-
-echo "Create new bootable bios iso"
-#cp ~root/beng-rely/files/isolinux.cfg /ISO/dvd_7/isolinux/isolinux.cfg
-#mkisofs -o $CURDIR/$TRGISOBIOS -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -R -J -v -T .
-echo "Generated iso: $CURDIR/$TRGISOBIOS"
