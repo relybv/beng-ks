@@ -148,4 +148,9 @@ menu15:
   netmask: 255.255.255.0
   gateway: 10.100.10.1
   nameserver: 172.18.99.210
-
+menu16:
+  entry: 16
+  menulabel: dual boot test
+  ks: https://raw.githubusercontent.com/relybv/beng-ks/master/ks/ks-boot-test.cfg
+  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  append: initrd=initrd.img lang=en_US keymap=us
