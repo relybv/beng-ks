@@ -152,5 +152,6 @@ menu16:
   entry: 16
   menulabel: dual boot test
   ks: https://raw.githubusercontent.com/relybv/beng-ks/master/ks/ks-boot-test.cfg
-  repo: http://sjefkeschelm.beeldengeluid.nl/cdrom_7.2
+  repo: http://sjefkeschelm.beeldengeluid.nl/rhel_7.3/cdrom_7.2
   append: initrd=initrd.img lang=en_US keymap=us
+
